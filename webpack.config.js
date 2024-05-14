@@ -60,6 +60,9 @@ module.exports = {
   plugins: [
     new AddHeaderPlugin(),
   ],
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   optimization: {
     minimize: true,
     minimizer: [
