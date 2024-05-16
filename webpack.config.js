@@ -8,7 +8,7 @@ class AddHeaderPlugin {
 
   apply(compiler) {
     compiler.hooks.emit.tapAsync('AddHeaderPlugin', (compilation, callback) => {
-      const files = glob.sync('./src/**/index.ts');
+      const files = glob.sync('./src/**/index.ts?(x)');
       files.forEach((file) => {
         const folderName = path.dirname(file).split(path.sep).slice(1).join(path.sep);
         const outputFolderName = path.dirname(file).split(path.sep).join('_').replace(/^src_/, '');
@@ -32,7 +32,7 @@ module.exports = {
   mode: 'production', // or 'development' if you need sourcemaps
   entry: () => {
     const entries = {};
-    glob.sync('./src/**/index.ts').forEach((file) => {
+    glob.sync('./src/**/index.ts*').forEach((file) => {
       const folderList = path.dirname(file).split(path.sep).join('_');
       const outputName = `${folderList.replace(/^src_/, '')}.user.js`; // Remove "src_" from the filename
       entries[outputName] = './' + file; // Add './' prefix to the file path
@@ -46,7 +46,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -61,7 +61,7 @@ module.exports = {
     new AddHeaderPlugin(),
   ],
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.tsx', '.jsx']
   },
   optimization: {
     minimize: true,
