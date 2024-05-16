@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "devbuild": "webpack --config webpack.config.js  --watch",
     "create": "node --experimental-modules ./bin/cli.mjs"
   },
   "devDependencies": {
