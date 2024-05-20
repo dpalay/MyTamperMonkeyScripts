@@ -50,6 +50,9 @@ program
       directories = userInput.directories;
     }
     
+    /**
+     * @type {QuestionCollection}
+     */
     const questions = [
       {
         type: 'input',
@@ -101,6 +104,14 @@ program
         })),
         default: 'document-end',
       },
+      {
+        type: 'list',
+        name: 'frames', 
+        message: 'Do you want the script to run only in the top frame, or all frames?',
+        choice: [{name: "Top Frame Only", value: false},{name: "All Frames", value: true}],
+        default: "false"
+      },
+      
     ];
 
     
@@ -136,6 +147,7 @@ function generateHeaderContent(name, answers) {
 // @author       ${answers.author}
 // @match        ${answers.match}
 // @run-at       ${answers.runAt}
+${answers.frames ? "" : "// @noframes"}
 ${grantPermissions}
 // ==/UserScript==
 `;
