@@ -1,0 +1,10 @@
+// ==UserScript==
+// @name         Brainbow Schedule View
+// @namespace    EPIC.LMS.BBOW.GANTT
+// @version      0.1
+// @description  Adds a schedule view to the registration table in brainbow
+// @author       Dave Palay
+// @match        http*://*brainbow*/Catalog/*
+// @run-at       document-end
+
+// ==/UserScript==
