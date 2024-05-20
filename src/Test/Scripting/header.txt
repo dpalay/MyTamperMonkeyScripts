@@ -1,0 +1,12 @@
+// ==UserScript==
+// @name         Playground
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Description of Playground
+// @author       Your Name
+// @match        http*://*/*
+// @run-at       document-end
+// @noframes
+// @grant        GM_registerMenuCommand
+
+// ==/UserScript==
